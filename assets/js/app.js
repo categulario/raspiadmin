@@ -46,6 +46,7 @@ function RaspiAdmin() {
 				console.log(b);
 				console.log(c);
 				ladda.ladda('stop');
+				alert('Error while processing request');
 			}
 		});
 	};
