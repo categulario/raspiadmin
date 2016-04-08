@@ -12,7 +12,7 @@ function RaspiAdmin() {
 	});
 
 	self.load = function (done) {
-		$.get('/api/settings.json', function (data) {
+		$.get('/api/settings', function (data) {
 			for (var key in data) {
 				if (key in self && typeof self[key] == 'function') {
 					self[key](data[key]);
@@ -22,6 +22,14 @@ function RaspiAdmin() {
 			done();
 		});
 	}
+
+	self.toggle_timelapse = function (vm, event) {
+		$.post('/api/timelapse', {
+			'set_running': self.timelapse_running()
+		}, function (data) {
+			console.log(data);
+		});
+	};
 }
 
 $(function () {

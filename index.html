@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Categulario's raspberry</title>
 
+		<link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
 		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/app.css">
@@ -19,7 +20,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<img src="timelapse/000last.jpg" class="fullwidth">
-					<button class="btn fullwidth" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, text: timelapse_btn_text"></button>
+					<button class="btn fullwidth" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, text: timelapse_btn_text, click: toggle_timelapse"></button>
 					<button class="btn btn-info fullwidth">Compute preview</button>
 				</div>
 			</div>
@@ -28,6 +29,8 @@
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+		<script type="text/javascript" src="bower_components/spin.js/spin.min.js"></script>
+		<script type="text/javascript" src="bower_components/spin.js/jquery.spin.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>
