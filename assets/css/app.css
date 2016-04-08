@@ -1,6 +1,10 @@
 body {
 	padding-top: 10px;
+	background-color: #e2e2e2;
 }
 button {
 	margin-top: 10px;
+}
+.fullwidth {
+	width: 100%;
 }

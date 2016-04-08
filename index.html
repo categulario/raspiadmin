@@ -13,9 +13,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-				<img src="timelapse/000last.jpg" style="width: 100%;">
-				<button class="btn btn-info" style="width: 100%;">Stop timelapse</button>
-			</div>
+					<img src="timelapse/000last.jpg" class="fullwidth">
+					<button class="btn fullwidth" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, text: timelapse_btn_text"></button>
+					<button class="btn btn-info fullwidth">Compute preview</button>
+				</div>
 			</div>
 		</div>
 
