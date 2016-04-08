@@ -11,23 +11,42 @@ function RaspiAdmin() {
 		}
 	});
 
+	self.update_attrs = function (data) {
+		for (var key in data) {
+			if (key in self && typeof self[key] == 'function') {
+				self[key](data[key]);
+			}
+		}
+	};
+
 	self.load = function (done) {
 		$.get('/api/settings', function (data) {
-			for (var key in data) {
-				if (key in self && typeof self[key] == 'function') {
-					self[key](data[key]);
-				}
-			}
+			self.update_attrs(data);
 
 			done();
 		});
 	}
 
 	self.toggle_timelapse = function (vm, event) {
-		$.post('/api/timelapse', {
-			'set_running': self.timelapse_running()
-		}, function (data) {
-			console.log(data);
+		var ladda = $(event.target).ladda();
+
+		ladda.ladda('start');
+
+		$.post({
+			url: '/api/timelapse',
+			data: {
+				'set_running': !self.timelapse_running()
+			},
+			success: function (data) {
+				ladda.ladda('stop');
+				self.update_attrs(data);
+			},
+			error: function (a, b, c) {
+				console.log(a);
+				console.log(b);
+				console.log(c);
+				ladda.ladda('stop');
+			}
 		});
 	};
 }

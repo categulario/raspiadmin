@@ -4,6 +4,7 @@ body {
 }
 button {
 	margin-top: 10px;
+	position: relative;
 }
 .fullwidth {
 	width: 100%;

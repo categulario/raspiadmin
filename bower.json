@@ -24,6 +24,6 @@
     "bootstrap": "^3.3.6",
     "knockout": "^3.4.0",
     "font-awesome": "fontawesome#^4.5.0",
-    "spin.js": "^2.3.2"
+    "ladda": "^1.0.0"
   }
 }
