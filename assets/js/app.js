@@ -54,6 +54,27 @@ function RaspiAdmin() {
 	self.preview_reload = function (vm, event) {
 		event.target.src = '/timelapse/000last.jpg?'+Date.now()
 	};
+
+	self.hide_menu = function (vm, event) {
+		$('#navigation').animate({
+			left: '-100%',
+		}, 500);
+		$('#overlay').animate({
+			opacity: 0,
+		}, 500, function () {
+			$('#overlay').css({left: '-100%'});
+		});
+	};
+
+	self.show_menu = function (vm, event) {
+		$('#overlay').css({left: '0'});
+		$('#navigation').animate({
+			left: '0px',
+		}, 500);
+		$('#overlay').animate({
+			opacity: .5,
+		}, 500);
+	};
 }
 
 $(function () {

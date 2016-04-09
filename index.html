@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div class="rasp-nav">
-			<div class="rasp-menu-toggle"><i class="fa fa-bars"></i></div>
+			<div class="rasp-menu-toggle" data-bind="click: show_menu"><i class="fa fa-bars"></i></div>
 			<div class="rasp-title">Rasp administration</div>
 		</div>
 		<div class="container">
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="overlay"></div>
+		<div id="overlay" data-bind="click:  hide_menu"></div>
 		<div id="navigation">
 			<div id="nav-header">
 				<img src="assets/img/raspberry-pi-logo.png">
