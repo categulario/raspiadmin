@@ -20,7 +20,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<img src="timelapse/000last.jpg" class="fullwidth">
+					<img src="timelapse/000last.jpg" class="fullwidth" data-bind="click: preview_reload">
 					<button class="btn fullwidth ladda-button" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, click: toggle_timelapse">
 						<span class="ladda-label" data-bind="text: timelapse_btn_text"></span>
 					</button>

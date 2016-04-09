@@ -50,6 +50,10 @@ function RaspiAdmin() {
 			}
 		});
 	};
+
+	self.preview_reload = function (vm, event) {
+		event.target.src = '/timelapse/000last.jpg?'+Date.now()
+	};
 }
 
 $(function () {
