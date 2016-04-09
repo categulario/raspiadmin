@@ -1,5 +1,4 @@
 import os
-import cherrypy
 import re
 
 __all__ = ['settings']
