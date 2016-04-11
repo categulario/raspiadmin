@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 from lib.conf import settings
 from lib.fs import touch
+import subprocess
+import uuid
 import os
 
 app = Flask(__name__)
@@ -28,9 +30,15 @@ def api_timelapse():
 @app.route('/api/take', methods=['POST'])
 def api_take():
     if request.method == 'POST':
+		img_name = uuid.uuid1()+'.jpg'
+		retcode = subprocess.call([
+			'raspistill',
+			'-o',
+			settings.CAM_DIR+img_name,
+		])
 
         return jsonify({
-            "src": 'cam/casa.jpg'
+            "src": 'cam/'+img_name
         })
 
 if __name__ == "__main__":
