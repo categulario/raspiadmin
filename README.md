@@ -4,4 +4,6 @@ A tool for raspberrypi remote administration
 
 ## TODO
 
-* tap on image to reaload
+* instant preview of camera
+* apagar la cámara
+* ajustar configuraciones de cámara

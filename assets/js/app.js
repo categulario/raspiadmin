@@ -52,7 +52,28 @@ function RaspiAdmin() {
 	};
 
 	self.preview_reload = function (vm, event) {
-		event.target.src = '/timelapse/000last.jpg?'+Date.now()
+		event.target.src = '/timelapse/000last.jpg?'+Date.now();
+	};
+
+	self.take_photo = function (vm, event) {
+		var ladda = $(event.target).ladda();
+
+		ladda.ladda('start');
+
+		$.post({
+			url: '/api/take',
+			success: function (data) {
+				var img = $('#main-image')[0];
+
+				img.src = data.src+'?'+Date.now();
+
+				ladda.ladda('stop');
+			},
+			error: function (xhr, text, reason) {
+				alert('Request failed, sorry');
+				ladda.ladda('stop');
+			}
+		});
 	};
 
 	self.hide_menu = function (vm, event) {

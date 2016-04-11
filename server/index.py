@@ -25,6 +25,14 @@ def api_timelapse():
             "timelapse_running": set_running
         })
 
+@app.route('/api/take', methods=['POST'])
+def api_take():
+    if request.method == 'POST':
+
+        return jsonify({
+            "src": 'cam/casa.jpg'
+        })
+
 if __name__ == "__main__":
     app.run(
         host='0.0.0.0',
