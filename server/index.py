@@ -55,6 +55,24 @@ def api_take():
             "src": 'cam/'+img_name
         })
 
+@app.route('/api/shutdown', methods=['POST'])
+def api_shutdown():
+    if request.method == 'POST':
+        try:
+            retcode = subprocess.call([
+                'sudo',
+                'halt',
+            ])
+        except FileNotFoundError:
+            raise FailedCommand('Missing command', status_code=500)
+
+        if retcode != 0:
+            raise FailedCommand('The command could not be executed', status_code=500)
+
+        return jsonify({
+            "msg": 'done'
+        })
+
 if __name__ == "__main__":
     app.run(
         host='0.0.0.0',

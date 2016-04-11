@@ -35,7 +35,7 @@ function RaspiAdmin() {
 				done();
 			}
 		});
-	}
+	};
 
 	self.toggle_timelapse = function (vm, event) {
 		var ladda = $(event.target).ladda();
@@ -92,6 +92,27 @@ function RaspiAdmin() {
 
 				if (xhr.responseJSON) {
 					alert(xhr.responseJSON.msg);
+					return;
+				}
+
+				alert('Upsi, something is not working...');
+			}
+		});
+	};
+
+	self.shut_down = function (vm, event) {
+		if (!confirm('Do you really want to shutdown the rasp?')) {
+			return;
+		}
+
+		$.post({
+			url: '/api/shutdown',
+			success: function (data) {
+				alert('You may now close this window');
+			},
+			error: function (xhr) {
+				if (xhr.status == 502) {
+					alert('Server not running');
 					return;
 				}
 
