@@ -70,8 +70,19 @@ function RaspiAdmin() {
 				ladda.ladda('stop');
 			},
 			error: function (xhr, text, reason) {
-				alert('Request failed, sorry');
 				ladda.ladda('stop');
+
+				if (xhr.status != 500) {
+					alert('Request failed: '+xhr.status);
+					return;
+				}
+
+				if (xhr.responseJSON) {
+					alert(xhr.responseJSON.msg);
+					return;
+				}
+
+				alert('Upsi, something is not working...');
 			}
 		});
 	};

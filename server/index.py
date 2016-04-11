@@ -1,11 +1,18 @@
 from flask import Flask, jsonify, request
 from lib.conf import settings
 from lib.fs import touch
+from lib.errors import FailedCommand
 import subprocess
 import uuid
 import os
 
 app = Flask(__name__)
+
+@app.errorhandler(FailedCommand)
+def handle_failed_command(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 @app.route("/api/settings")
 def api_settings():
@@ -30,12 +37,19 @@ def api_timelapse():
 @app.route('/api/take', methods=['POST'])
 def api_take():
     if request.method == 'POST':
-        img_name = uuid.uuid1()+'.jpg'
-        retcode = subprocess.call([
-            'raspistill',
-            '-o',
-            settings.CAM_DIR+img_name,
-        ])
+        img_name = uuid.uuid1().hex+'.jpg'
+
+        try:
+            retcode = subprocess.call([
+                'raspistill',
+                '-o',
+                settings.CAM_DIR+img_name,
+            ])
+        except FileNotFoundError:
+            raise FailedCommand('Missing command', status_code=500)
+
+        if retcode != 0:
+            raise FailedCommand('The command could not be executed', status_code=500)
 
         return jsonify({
             "src": 'cam/'+img_name
