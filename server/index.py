@@ -30,12 +30,12 @@ def api_timelapse():
 @app.route('/api/take', methods=['POST'])
 def api_take():
     if request.method == 'POST':
-		img_name = uuid.uuid1()+'.jpg'
-		retcode = subprocess.call([
-			'raspistill',
-			'-o',
-			settings.CAM_DIR+img_name,
-		])
+        img_name = uuid.uuid1()+'.jpg'
+        retcode = subprocess.call([
+            'raspistill',
+            '-o',
+            settings.CAM_DIR+img_name,
+        ])
 
         return jsonify({
             "src": 'cam/'+img_name
