@@ -20,10 +20,20 @@ function RaspiAdmin() {
 	};
 
 	self.load = function (done) {
-		$.get('/api/settings', function (data) {
-			self.update_attrs(data);
+		$.get({
+			url: '/api/settings',
+			success: function (data) {
+				self.update_attrs(data);
 
-			done();
+				done();
+			},
+			error: function (xhr) {
+				if (xhr.status == 502) {
+					alert('Server not running');
+				}
+
+				done();
+			}
 		});
 	}
 
@@ -41,12 +51,15 @@ function RaspiAdmin() {
 				ladda.ladda('stop');
 				self.update_attrs(data);
 			},
-			error: function (a, b, c) {
-				console.log(a);
-				console.log(b);
-				console.log(c);
+			error: function (xhr) {
 				ladda.ladda('stop');
-				alert('Error while processing request');
+
+				if (xhr.status == 502) {
+					alert('Server not running');
+					return;
+				}
+
+				alert('Error while processing request: '+xhr.status);
 			}
 		});
 	};
@@ -72,8 +85,8 @@ function RaspiAdmin() {
 			error: function (xhr, text, reason) {
 				ladda.ladda('stop');
 
-				if (xhr.status != 500) {
-					alert('Request failed: '+xhr.status);
+				if (xhr.status == 502) {
+					alert('Server not running');
 					return;
 				}
 
