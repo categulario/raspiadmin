@@ -1,101 +1,56 @@
+function LoadingViewModel() {
+	var self = this;
+
+	self.template = ko.observable('loading-template');
+
+	self.load = function () {
+		var opts = {
+		  lines: 13 // The number of lines to draw
+		, length: 0 // The length of each line
+		, width: 34 // The line thickness
+		, radius: 39 // The radius of the inner circle
+		, scale: 2 // Scales overall size of the spinner
+		, corners: 0 // Corner roundness (0..1)
+		, color: '#6C9BD3' // #rgb or #rrggbb or array of colors
+		, opacity: 0.25 // Opacity of the lines
+		, rotate: 0 // The rotation offset
+		, direction: 1 // 1: clockwise, -1: counterclockwise
+		, speed: 1 // Rounds per second
+		, trail: 60 // Afterglow percentage
+		, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+		, zIndex: 2e9 // The z-index (defaults to 2000000000)
+		, className: 'spinner' // The CSS class to assign to the spinner
+		, top: '50%' // Top position relative to parent
+		, left: '50%' // Left position relative to parent
+		, shadow: false // Whether to render a shadow
+		, hwaccel: false // Whether to use hardware acceleration
+		, position: 'absolute' // Element positioning
+		}
+		var target = $('#spinner')[0];
+		var spinner = new Spinner(opts).spin(target);
+	};
+}
+
 function RaspiAdmin() {
 	var self = this;
 
-	self.timelapse_running = ko.observable(false);
-
-	self.timelapse_btn_text = ko.pureComputed(function () {
-		if (self.timelapse_running()) {
-			return "Stop timelapse";
-		} else {
-			return "Start timelapse";
-		}
-	});
-
-	self.update_attrs = function (data) {
-		for (var key in data) {
-			if (key in self && typeof self[key] == 'function') {
-				self[key](data[key]);
-			}
-		}
-	};
+	self.viewmodel = ko.observable(new LoadingViewModel());
+	self.settings  = {};
 
 	self.load = function (done) {
+		self.viewmodel().load();
+
 		$.get({
 			url: '/api/settings',
 			success: function (data) {
-				self.update_attrs(data);
-
+				self.settings = data;
 				done();
 			},
 			error: function (xhr) {
 				if (xhr.status == 502) {
 					alert('Server not running');
 				}
-
 				done();
-			}
-		});
-	};
-
-	self.toggle_timelapse = function (vm, event) {
-		var ladda = $(event.target).ladda();
-
-		ladda.ladda('start');
-
-		$.post({
-			url: '/api/timelapse',
-			data: {
-				'set_running': !self.timelapse_running()
-			},
-			success: function (data) {
-				ladda.ladda('stop');
-				self.update_attrs(data);
-			},
-			error: function (xhr) {
-				ladda.ladda('stop');
-
-				if (xhr.status == 502) {
-					alert('Server not running');
-					return;
-				}
-
-				alert('Error while processing request: '+xhr.status);
-			}
-		});
-	};
-
-	self.preview_reload = function (vm, event) {
-		event.target.src = '/timelapse/000last.jpg?'+Date.now();
-	};
-
-	self.take_photo = function (vm, event) {
-		var ladda = $(event.target).ladda();
-
-		ladda.ladda('start');
-
-		$.post({
-			url: '/api/take',
-			success: function (data) {
-				var img = $('#main-image')[0];
-
-				img.src = data.src+'?'+Date.now();
-
-				ladda.ladda('stop');
-			},
-			error: function (xhr, text, reason) {
-				ladda.ladda('stop');
-
-				if (xhr.status == 502) {
-					alert('Server not running');
-					return;
-				}
-
-				if (xhr.responseJSON) {
-					alert(xhr.responseJSON.msg);
-					return;
-				}
-
-				alert('Upsi, something is not working...');
 			}
 		});
 	};
@@ -121,7 +76,7 @@ function RaspiAdmin() {
 		});
 	};
 
-	self.hide_menu = function (vm, event) {
+	self.hide_menu = function () {
 		$('#navigation').animate({
 			left: '-100%',
 		}, 500);
@@ -132,7 +87,7 @@ function RaspiAdmin() {
 		});
 	};
 
-	self.show_menu = function (vm, event) {
+	self.show_menu = function () {
 		$('#overlay').css({left: '0'});
 		$('#navigation').animate({
 			left: '0px',
@@ -144,9 +99,11 @@ function RaspiAdmin() {
 }
 
 $(function () {
-	var rvm = new RaspiAdmin();
+	var rvm = window.rvm = new RaspiAdmin();
+
+	ko.applyBindings(rvm);
 
 	rvm.load(function () {
-		ko.applyBindings(rvm);
+		applyRoutes();
 	});
 });
