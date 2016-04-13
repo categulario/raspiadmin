@@ -38,17 +38,19 @@ function RaspiAdmin() {
 	self.settings  = {};
 
 	self.load = function (done) {
+		self.viewmodel().load();
+
 		$.get({
 			url: '/api/settings',
 			success: function (data) {
 				self.settings = data;
-
-				self.viewmodel(new TimelapseViewModel(self.settings));
+				done();
 			},
 			error: function (xhr) {
 				if (xhr.status == 502) {
 					alert('Server not running');
 				}
+				done();
 			}
 		});
 	};
@@ -74,7 +76,7 @@ function RaspiAdmin() {
 		});
 	};
 
-	self.hide_menu = function (vm, event) {
+	self.hide_menu = function () {
 		$('#navigation').animate({
 			left: '-100%',
 		}, 500);
@@ -85,7 +87,7 @@ function RaspiAdmin() {
 		});
 	};
 
-	self.show_menu = function (vm, event) {
+	self.show_menu = function () {
 		$('#overlay').css({left: '0'});
 		$('#navigation').animate({
 			left: '0px',
@@ -97,9 +99,11 @@ function RaspiAdmin() {
 }
 
 $(function () {
-	var rvm = new RaspiAdmin();
+	var rvm = window.rvm = new RaspiAdmin();
 
 	ko.applyBindings(rvm);
 
-	rvm.load();
+	rvm.load(function () {
+		applyRoutes();
+	});
 });

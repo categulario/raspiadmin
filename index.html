@@ -30,16 +30,16 @@
 			<div id="nav-options">
 				<div class="nav-opt">
 					<i class="fa fa-fw fa-camera"></i>
-					<a href="#">Timelapse Control</a>
+					<a href="#/timelapse">Timelapse Control</a>
 				</div>
 				<div class="nav-opt">
 					<i class="fa fa-fw fa-picture-o"></i>
-					<a href="#">Gallery</a>
+					<a href="#/gallery">Gallery</a>
 				</div>
 				<div class="nav-sep"></div>
 				<div class="nav-opt">
 					<i class="fa fa-fw fa-cog"></i>
-					<a href="#">Settings</a>
+					<a href="#/settings">Settings</a>
 				</div>
 				<div class="nav-opt">
 					<i class="fa fa-fw fa-power-off"></i>
@@ -72,6 +72,14 @@
 			</div>
 		</script>
 
+		<script type="text/html" id="gallery-template">
+			La galería...
+		</script>
+
+		<script type="text/html" id="settings-template">
+			Las configs...
+		</script>
+
 		<script type="text/html" id="loading-template">
 			<div id="spinner"></div>
 		</script>
@@ -83,7 +91,11 @@
 		<script type="text/javascript" src="bower_components/ladda/dist/spin.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/Finch JS/finch.min.js"></script>
+		<script type="text/javascript" src="assets/js/routes.js"></script>
 		<script type="text/javascript" src="assets/js/timelapse_vm.js"></script>
+		<script type="text/javascript" src="assets/js/gallery_vm.js"></script>
+		<script type="text/javascript" src="assets/js/settings_vm.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>

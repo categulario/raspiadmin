@@ -1,8 +1,8 @@
-function TimelapseViewModel() {
+function TimelapseViewModel(settings) {
 	var self = this;
 
 	self.template          = ko.observable('timelapse-template');
-	self.timelapse_running = ko.observable(false);
+	self.timelapse_running = ko.observable(settings.timelapse_running);
 
 	self.timelapse_btn_text = ko.pureComputed(function () {
 		if (self.timelapse_running()) {
