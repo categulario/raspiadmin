@@ -10,7 +10,7 @@ button {
 	width: 100%;
 }
 .rasp-nav {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -92,4 +92,8 @@ button {
 .nav-sep {
 	height: 1px;
 	background-color: #ccc;
+}
+#spinner {
+	height: 100vh;
+	position: relative;
 }

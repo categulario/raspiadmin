@@ -17,29 +17,11 @@
 			<div class="rasp-menu-toggle" data-bind="click: show_menu"><i class="fa fa-bars"></i></div>
 			<div class="rasp-title">Rasp administration</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<img
-						id="main-image"
-						src="timelapse/000last.jpg"
-						class="fullwidth"
-						data-bind="click: preview_reload">
-					<button class="btn fullwidth ladda-button" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, click: toggle_timelapse">
-						<i class="fa fa-clock-o"></i>
-						<span class="ladda-label" data-bind="text: timelapse_btn_text"></span>
-					</button>
-					<button class="btn btn-info fullwidth">
-						<i class="fa fa-eye"></i>
-						Compute preview
-					</button>
-					<button class="btn btn-info fullwidth" data-bind="click: take_photo">
-						<i class="fa fa-camera"></i>
-						Take photo
-					</button>
-				</div>
-			</div>
-		</div>
+
+		<!-- ko with: viewmodel -->
+		<div class="container" data-bind="template: template"></div>
+		<!-- /ko -->
+
 		<div id="overlay" data-bind="click:  hide_menu"></div>
 		<div id="navigation">
 			<div id="nav-header">
@@ -66,12 +48,42 @@
 			</div>
 		</div>
 
+		<script type="text/html" id="timelapse-template">
+			<div class="row">
+				<div class="col-md-12">
+					<img
+						id="main-image"
+						src="timelapse/000last.jpg"
+						class="fullwidth"
+						data-bind="click: preview_reload">
+					<button class="btn fullwidth ladda-button" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, click: toggle_timelapse">
+						<i class="fa fa-clock-o"></i>
+						<span class="ladda-label" data-bind="text: timelapse_btn_text"></span>
+					</button>
+					<button class="btn btn-info fullwidth">
+						<i class="fa fa-eye"></i>
+						Compute preview
+					</button>
+					<button class="btn btn-info fullwidth" data-bind="click: take_photo">
+						<i class="fa fa-camera"></i>
+						Take photo
+					</button>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="loading-template">
+			<div id="spinner"></div>
+		</script>
+
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+		<script type="text/javascript" src="bower_components/knockout-mapping/knockout.mapping.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/spin.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/timelapse_vm.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>
