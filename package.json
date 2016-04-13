@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/developingo/raspiadmin/issues"
   },
-  "homepage": "https://github.com/developingo/raspiadmin#readme"
+  "homepage": "https://github.com/developingo/raspiadmin#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
 }
