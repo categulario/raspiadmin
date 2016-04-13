@@ -26,6 +26,6 @@
     "font-awesome": "fontawesome#^4.5.0",
     "ladda": "^1.0.0",
     "knockout-mapping": "^2.4.1",
-    "Finch JS": "finchjs#^0.5.14"
+    "finchjs": "^0.5.14"
   }
 }
