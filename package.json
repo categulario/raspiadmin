@@ -1,0 +1,23 @@
+{
+  "name": "raspiadmin",
+  "version": "0.1.0",
+  "description": "admin GUI for a raspberry",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developingo/raspiadmin.git"
+  },
+  "keywords": [
+    "raspberry",
+    "administration"
+  ],
+  "author": "@Categulario",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/developingo/raspiadmin/issues"
+  },
+  "homepage": "https://github.com/developingo/raspiadmin#readme"
+}
