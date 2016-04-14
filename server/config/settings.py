@@ -3,6 +3,3 @@ RUN_DIR = "/home/pi/run"
 
 # Where to store single photos
 CAM_DIR = '/home/pi/Web/cam/'
-
-# Send this to background?
-DAEMON = False

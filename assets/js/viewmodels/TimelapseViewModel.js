@@ -1,8 +1,8 @@
-function TimelapseViewModel(settings) {
+function TimelapseViewModel() {
 	var self = this;
 
 	self.template          = ko.observable('timelapse-template');
-	self.timelapse_running = ko.observable(settings.timelapse_running);
+	self.timelapse_running = ko.observable(false);
 
 	self.timelapse_btn_text = ko.pureComputed(function () {
 		if (self.timelapse_running()) {
@@ -11,6 +11,11 @@ function TimelapseViewModel(settings) {
 			return "Start timelapse";
 		}
 	});
+
+	self.load = function (done) {
+		self.timelapse_running(rvm.settings.timelapse_running);
+		done();
+	};
 
 	self.toggle_timelapse = function (vm, event) {
 		var ladda = $(event.target).ladda();

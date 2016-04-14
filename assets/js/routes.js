@@ -3,18 +3,13 @@ function applyRoutes() {
 		Finch.navigate('/timelapse');
 	});
 
-	Finch.route('/timelapse', function (params) {
-		rvm.viewmodel(new TimelapseViewModel(rvm.settings));
-		rvm.hide_menu();
-	});
+	Finch.route('/:section', function (params) {
+		var vm = rvm.vmpool[params.section];
 
-	Finch.route('/gallery', function (params) {
-		rvm.viewmodel(new GalleryViewModel(rvm.settings));
-		rvm.hide_menu();
-	});
+		vm.load(function () {
+			rvm.viewmodel(vm);
+		});
 
-	Finch.route('/settings', function (params) {
-		rvm.viewmodel(new SettingsViewModel(rvm.settings));
 		rvm.hide_menu();
 	});
 
