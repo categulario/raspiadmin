@@ -41,7 +41,7 @@ function RaspiAdmin() {
 		self.viewmodel().load();
 
 		$.get({
-			url: '/api/settings',
+			url: '/api/timelapse',
 			success: function (data) {
 				self.settings = data;
 				done();
