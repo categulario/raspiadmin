@@ -83,9 +83,27 @@
 		<script type="text/html" id="gallery-template">
 			<div class="row">
 				<div class="col-sm-12" data-bind="foreach: pictures">
-					<img data-bind="attr: {src: src}" class="img-thumbnail">
+					<div class="media-item">
+						<img data-bind="attr: {src: src}, click: show" class="fullwidth">
+					</div>
 				</div>
 			</div>
+
+			<div id="img-modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<img id="img-modal-img">
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-lg">
+								<i class="fa fa-trash"></i>
+							</button>
+							<button type="button" class="btn btn-primary btn-lg">
+								<i class="fa fa-download"></i>
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 		</script>
 
 		<script type="text/html" id="settings-template">

@@ -2,6 +2,14 @@ function Picture(src) {
 	var self = this;
 
 	self.src = ko.observable('/cam/'+src);
+
+	self.show = function (vm, event) {
+		$('#img-modal-img')[0].src = self.src();
+
+		setTimeout(function () {
+			$('#img-modal').modal('show');
+		});
+	};
 }
 
 function GalleryViewModel() {
