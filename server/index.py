@@ -75,6 +75,15 @@ def api_shutdown():
             "msg": 'done'
         })
 
+@app.route('/api/gallery', methods=['GET'])
+def api_gallery():
+    if request.method == 'GET':
+        def is_image(filename):
+            return filename.lower().split('.')[-1] in ['jpg', 'png', 'gif']
+        return jsonify({
+            'pictures': filter(is_image, os.listdir(settings.CAM_DIR))
+        })
+
 if __name__ == "__main__":
     app.run(
         host='0.0.0.0',

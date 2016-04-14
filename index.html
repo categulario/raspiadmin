@@ -81,7 +81,11 @@
 		</script>
 
 		<script type="text/html" id="gallery-template">
-			La galería...
+			<div class="row">
+				<div class="col-sm-12" data-bind="foreach: pictures">
+					<img data-bind="attr: {src: src}" class="img-thumbnail">
+				</div>
+			</div>
 		</script>
 
 		<script type="text/html" id="settings-template">

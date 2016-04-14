@@ -16,6 +16,7 @@ button {
 	width: 100%;
 	height: 48px;
 	background-color: #538EDA;
+	z-index: 1000;
 }
 .rasp-menu-toggle {
 	width: 48px;
