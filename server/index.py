@@ -16,13 +16,9 @@ def handle_failed_command(error):
 
 @app.route("/api/settings")
 def api_settings():
-    return jsonify({
-        "timelapse_running": os.path.isfile(
-            os.path.join(settings.RUN_DIR, 'timelapse.lock')
-        )
-    })
+    return {}
 
-@app.route("/api/timelapse", methods=['POST'])
+@app.route("/api/timelapse", methods=['GET', 'POST'])
 def api_timelapse():
     if request.method == 'POST':
         set_running = request.form['set_running'] == 'true'
@@ -32,6 +28,12 @@ def api_timelapse():
             os.remove(os.path.join(settings.RUN_DIR, 'timelapse.lock'))
         return jsonify({
             "timelapse_running": set_running
+        })
+    elif request.method == 'GET':
+        return jsonify({
+            "timelapse_running": os.path.isfile(
+                os.path.join(settings.RUN_DIR, 'timelapse.lock')
+            )
         })
 
 @app.route('/api/take', methods=['POST'])
@@ -71,6 +73,15 @@ def api_shutdown():
 
         return jsonify({
             "msg": 'done'
+        })
+
+@app.route('/api/gallery', methods=['GET'])
+def api_gallery():
+    if request.method == 'GET':
+        def is_image(filename):
+            return filename.lower().split('.')[-1] in ['jpg', 'png', 'gif']
+        return jsonify({
+            'pictures': filter(is_image, os.listdir(settings.CAM_DIR))
         })
 
 if __name__ == "__main__":

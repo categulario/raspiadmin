@@ -81,7 +81,29 @@
 		</script>
 
 		<script type="text/html" id="gallery-template">
-			La galería...
+			<div class="row">
+				<div class="col-sm-12" data-bind="foreach: pictures">
+					<div class="media-item">
+						<img data-bind="attr: {src: src}, click: show" class="fullwidth">
+					</div>
+				</div>
+			</div>
+
+			<div id="img-modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<img id="img-modal-img">
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-lg">
+								<i class="fa fa-trash"></i>
+							</button>
+							<button type="button" class="btn btn-primary btn-lg">
+								<i class="fa fa-download"></i>
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 		</script>
 
 		<script type="text/html" id="settings-template">
@@ -101,9 +123,9 @@
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/finchjs/finch.min.js"></script>
 		<script type="text/javascript" src="assets/js/routes.js"></script>
-		<script type="text/javascript" src="assets/js/timelapse_vm.js"></script>
-		<script type="text/javascript" src="assets/js/gallery_vm.js"></script>
-		<script type="text/javascript" src="assets/js/settings_vm.js"></script>
+		<script type="text/javascript" src="assets/js/viewmodels/TimelapseViewModel.js"></script>
+		<script type="text/javascript" src="assets/js/viewmodels/GalleryViewModel.js"></script>
+		<script type="text/javascript" src="assets/js/viewmodels/SettingsViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>

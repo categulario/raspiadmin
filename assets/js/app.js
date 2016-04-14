@@ -34,14 +34,20 @@ function LoadingViewModel() {
 function RaspiAdmin() {
 	var self = this;
 
-	self.viewmodel = ko.observable(new LoadingViewModel());
+	self.vmpool = {
+		'timelapse': new TimelapseViewModel(),
+		'gallery'  : new GalleryViewModel(),
+		'loading'  : new LoadingViewModel(),
+		'settings' : new SettingsViewModel(),
+	};
+	self.viewmodel = ko.observable(self.vmpool.loading);
 	self.settings  = {};
 
 	self.load = function (done) {
 		self.viewmodel().load();
 
 		$.get({
-			url: '/api/settings',
+			url: '/api/timelapse',
 			success: function (data) {
 				self.settings = data;
 				done();

@@ -8,3 +8,4 @@ def deploy():
     with cd(web_dir):
         run("git pull")
         run("bower install")
+        run("sudo systemctl restart gunicorn")
