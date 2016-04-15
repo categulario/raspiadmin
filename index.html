@@ -60,10 +60,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<img
-						id="main-image"
-						src="timelapse/000last.jpg"
 						class="fullwidth"
-						data-bind="click: preview_reload">
+						data-bind="click: preview_reload, attr: {src: mainImageSrc}">
 					<button class="btn fullwidth ladda-button" data-bind="css: {'btn-success': !timelapse_running(), 'btn-danger': timelapse_running}, click: toggle_timelapse">
 						<i class="fa fa-clock-o"></i>
 						<span class="ladda-label" data-bind="text: timelapse_btn_text"></span>
