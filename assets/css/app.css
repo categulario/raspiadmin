@@ -44,7 +44,7 @@ button {
 	cursor: pointer;
 }
 #overlay {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: -100%;
 	width: 100%;
@@ -55,7 +55,7 @@ button {
 	cursor: pointer;
 }
 #navigation {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: -100%;
 	width: 75%;
@@ -109,7 +109,7 @@ button {
 	position: relative;
 }
 .media-item {
-	max-width: 47%;
+	max-width: 46%;
 	height: auto;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -123,4 +123,12 @@ button {
 }
 .modal-dialog {
 	margin-top: 40%;
+}
+.modal-content {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+.modal-footer {
+	border-top: none;
 }

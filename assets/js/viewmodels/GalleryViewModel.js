@@ -33,4 +33,31 @@ function GalleryViewModel() {
 			}
 		})
 	};
+
+	self.deletePic = function (vm, event) {
+		var pieces = $('#img-modal-img')[0].src.split('/');
+		var ladda = $(event.target).ladda();
+
+		ladda.ladda('start');
+
+		$.ajax({
+			type: 'delete',
+			url: '/api/gallery/'+pieces[pieces.length-1],
+			success: function () {
+				self.pictures().filter(function (pic) {
+					return pic.src() == '/cam/'+pieces[pieces.length-1];
+				}).forEach(function (item) {
+					self.pictures.remove(item);
+				});
+				ladda.ladda('stop');
+				setTimeout(function () {
+					$('#img-modal').modal('hide');
+				}, 1);
+			},
+			error: function (xhr) {
+				alert('Something went wrong: '+shr.status_code);
+				ladda.ladda('stop');
+			}
+		});
+	};
 }
