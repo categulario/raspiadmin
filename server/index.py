@@ -84,6 +84,14 @@ def api_gallery():
             'pictures': filter(is_image, os.listdir(settings.CAM_DIR))
         })
 
+@app.route('/api/gallery/<path>', methods=['DELETE'])
+def api_gallery_delete(path):
+    if request.method == 'DELETE':
+        full_path = os.path.join(settings.CAM_DIR, path)
+        if os.path.isfile(full_path):
+            os.remove(full_path)
+        return ''
+
 if __name__ == "__main__":
     app.run(
         host='0.0.0.0',
