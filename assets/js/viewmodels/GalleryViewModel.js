@@ -5,6 +5,8 @@ function Picture(src) {
 
 	self.show = function (vm, event) {
 		$('#img-modal-img')[0].src = self.src();
+		$('#download-pic')[0].href = self.src();
+		$('#download-pic')[0].download = src;
 
 		setTimeout(function () {
 			$('#img-modal').modal('show');
