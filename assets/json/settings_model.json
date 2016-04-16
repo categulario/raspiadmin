@@ -1,0 +1,91 @@
+[
+	{
+		"key": "width",
+		"type": "int",
+		"description": "Set image width <size>",
+		"min": 640,
+		"max": 2592,
+		"default": 1296
+	},
+	{
+		"key": "height",
+		"type": "int",
+		"description": "Set image height <size>",
+		"min": 480,
+		"max": 1944,
+		"default": 972
+	},
+	{
+		"key": "quality",
+		"type": "int",
+		"description": "Set jpeg quality <0 to 100>",
+		"min": 0,
+		"max": 100,
+		"default": 90
+	},
+	{
+		"key": "raw",
+		"type": "bool",
+		"description": "Add raw bayer data to jpeg metadata",
+		"default": false
+	},
+	{
+		"key": "timeout",
+		"type": "int",
+		"description": "Time (in ms) before takes picture and shuts down (if not specified, set to 5s)",
+		"default": 5000,
+		"min": 0,
+		"max": 999999
+	},
+	{
+		"key": "thumb",
+		"type": "str",
+		"description": "Set thumbnail parameters (x:y:quality) or none",
+		"default": "640:480:50"
+	},
+	{
+		"key": "burst",
+		"type": "bool",
+		"description": "Enable 'burst capture mode'",
+		"default": false
+	},
+	{
+		"key": "mode",
+		"type": "select",
+		"description": "Force sensor mode. 0=auto. See docs for other modes available",
+		"options": [
+			{
+				"value": 0,
+				"caption": "Auto"
+			},
+			{
+				"value": 1,
+				"caption": "2592x1944 [4:3] video/pic (full)"
+			},
+			{
+				"value": 2,
+				"caption": "2592x1944 [4:3] video/pic (full)",
+			},
+			{
+				"value": 3,
+				"caption": "2592x1944 [4:3] video/pic (full)",
+			},
+			{
+				"value": 4,
+				"caption": "1296x972 [4:3] video (full)",
+			},
+			{
+				"value": 5,
+				"caption": "1296x730 [16:9] video (full)",
+			},
+			{
+				"value": 6,
+				"caption": "640x480 [4:3] video (full)",
+			},
+			{
+				"value": 7,
+				"caption": "640x480 [4:3] video (full)",
+			},
+		]
+	},
+]

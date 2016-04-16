@@ -16,7 +16,7 @@ def handle_failed_command(error):
 
 @app.route("/api/settings")
 def api_settings():
-    return {}
+    return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
 
 @app.route("/api/timelapse", methods=['GET', 'POST'])
 def api_timelapse():
@@ -44,6 +44,9 @@ def api_take():
         try:
             retcode = subprocess.call([
                 'raspistill',
+                '-n',
+                '-t',
+                '1000',
                 '-o',
                 settings.CAM_DIR+img_name,
             ])
