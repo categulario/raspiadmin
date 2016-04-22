@@ -4,6 +4,15 @@ function SettingsViewModel() {
 	self.template = ko.observable('settings-template');
 
 	self.load = function (done) {
+		$.get({
+			url: '/api/settings',
+			success: function (data) {
+				console.log(data);
+			},
+			error: function (xhr) {
+				alert('Something went wrong: '+xhr.status);
+			}
+		});
 		done();
 	};
 }

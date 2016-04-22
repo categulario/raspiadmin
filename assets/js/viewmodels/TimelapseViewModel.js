@@ -3,6 +3,7 @@ function TimelapseViewModel() {
 
 	self.template          = ko.observable('timelapse-template');
 	self.timelapse_running = ko.observable(false);
+	self.mainImageSrc      = ko.observable('timelapse/000last.jpg?'+Date.now());
 
 	self.timelapse_btn_text = ko.pureComputed(function () {
 		if (self.timelapse_running()) {
@@ -45,7 +46,7 @@ function TimelapseViewModel() {
 	};
 
 	self.preview_reload = function (vm, event) {
-		event.target.src = '/timelapse/000last.jpg?'+Date.now();
+		self.mainImageSrc('timelapse/000last.jpg?'+Date.now());
 	};
 
 	self.take_photo = function (vm, event) {
@@ -56,9 +57,7 @@ function TimelapseViewModel() {
 		$.post({
 			url: '/api/take',
 			success: function (data) {
-				var img = $('#main-image')[0];
-
-				img.src = data.src+'?'+Date.now();
+				self.mainImageSrc(data.src+'?'+Date.now());
 
 				ladda.ladda('stop');
 			},

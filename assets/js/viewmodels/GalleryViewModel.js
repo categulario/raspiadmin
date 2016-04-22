@@ -37,6 +37,10 @@ function GalleryViewModel() {
 	};
 
 	self.deletePic = function (vm, event) {
+		if (!confirm('Are you shure you want to delete this photo?')) {
+			return;
+		}
+
 		var pieces = $('#img-modal-img')[0].src.split('/');
 		var ladda = $(event.target).ladda();
 

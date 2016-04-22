@@ -4,11 +4,9 @@ A tool for raspberrypi remote administration
 
 ## TODO
 
-* ajustar configuraciones de cámara
-* galería de fotos a partir de cam/
-* calcular preview
-* recargar configuraciones en cambio de seccion o actualizarlas desde los vm hijos
+* almacenar timelapses por separado de alguna manera
+* visualizar timelapses en galería
 
 Settings:
 * ajustes ordinarios de la cámara a partir de las opciones
-* longitud del preview y fps
+* ajustes del cálculo de timelapses?

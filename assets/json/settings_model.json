@@ -1,0 +1,451 @@
+[
+	{
+		"title": "Camera",
+		"settings": [
+			{
+				"key": "width",
+				"type": "int",
+				"description": "Set image width <size>",
+				"min": 640,
+				"max": 2592,
+				"default": 1296
+			},
+			{
+				"key": "height",
+				"type": "int",
+				"description": "Set image height <size>",
+				"min": 480,
+				"max": 1944,
+				"default": 972
+			},
+			{
+				"key": "quality",
+				"type": "int",
+				"description": "Set jpeg quality <0 to 100>",
+				"min": 0,
+				"max": 100,
+				"default": 90
+			},
+			{
+				"key": "raw",
+				"type": "bool",
+				"description": "Add raw bayer data to jpeg metadata",
+				"default": false
+			},
+			{
+				"key": "timeout",
+				"type": "int",
+				"description": "Time (in ms) before takes picture and shuts down (if not specified, set to 5s)",
+				"default": 1000,
+				"min": 0,
+				"max": 999999
+			},
+			{
+				"key": "thumb",
+				"type": "str",
+				"description": "Set thumbnail parameters (x:y:quality) or none",
+				"default": "640:480:50"
+			},
+			{
+				"key": "burst",
+				"type": "bool",
+				"description": "Enable 'burst capture mode'",
+				"default": false
+			},
+			{
+				"key": "mode",
+				"type": "select",
+				"description": "Force sensor mode. 0=auto. See docs for other modes available",
+				"options": [
+					{
+						"value": 0,
+						"caption": "Auto"
+					},
+					{
+						"value": 1,
+						"caption": "2592x1944 [4:3] video/pic (full)"
+					},
+					{
+						"value": 2,
+						"caption": "2592x1944 [4:3] video/pic (full)",
+					},
+					{
+						"value": 3,
+						"caption": "2592x1944 [4:3] video/pic (full)",
+					},
+					{
+						"value": 4,
+						"caption": "1296x972 [4:3] video (full)",
+					},
+					{
+						"value": 5,
+						"caption": "1296x730 [16:9] video (full)",
+					},
+					{
+						"value": 6,
+						"caption": "640x480 [4:3] video (full)",
+					},
+					{
+						"value": 7,
+						"caption": "640x480 [4:3] video (full)",
+					},
+				]
+			}
+		]
+	},
+	{
+		"title": "Image",
+		"settings": [
+			{
+				"key": "sharpness",
+				"description": "Set image sharpness (-100 to 100)",
+				"type": "int",
+				"min": -100,
+				"max": 100
+			},
+			{
+				"key": "contrast",
+				"description": "Set image contrast (-100 to 100)",
+				"type": "int",
+				"min": -100,
+				"max": 100
+			},
+			{
+				"key": "brightness",
+				"description": "Set image brightness (0 to 100)",
+				"type": "int",
+				"min": 0,
+				"max": 100
+			},
+			{
+				"key": "saturation",
+				"description": "Set image saturation (-100 to 100)",
+				"type": "int",
+				"min": -100,
+				"max": 100
+			},
+			{
+				"key": "ISO",
+				"description": "Set capture ISO",
+				"type": "int"
+			},
+			{
+				"key": "vstab",
+				"description": "Turn on video stabilisation",
+				"type": "bool",
+				"default": false
+			},
+			{
+				"key": "ev",
+				"description": "Set EV compensation - steps of 1/6 stop",
+				"type": "int"
+			},
+			{
+				"key": "exposure",
+				"description": "Set exposure mode (see Notes)",
+				"type": "select",
+				"options": [
+					{
+						"caption": "off",
+						"value": "off"
+					},
+					{
+						"caption": "auto",
+						"value": "auto"
+					},
+					{
+						"caption": "night",
+						"value": "night"
+					},
+					{
+						"caption": "nightpreview",
+						"value": "nightpreview"
+					},
+					{
+						"caption": "backlight",
+						"value": "backlight"
+					},
+					{
+						"caption": "spotlight",
+						"value": "spotlight"
+					},
+					{
+						"caption": "sports",
+						"value": "sports"
+					},
+					{
+						"caption": "snow",
+						"value": "snow"
+					},
+					{
+						"caption": "beach",
+						"value": "beach"
+					},
+					{
+						"caption": "verylong",
+						"value": "verylong"
+					},
+					{
+						"caption": "fixedfps",
+						"value": "fixedfps"
+					},
+					{
+						"caption": "antishake",
+						"value": "antishake"
+					},
+					{
+						"caption": "fireworks",
+						"value": "fireworks"
+					}
+				]
+			},
+			{
+				"key": "awb",
+				"description": "Set AWB mode (see Notes)",
+				"type": "select",
+				"options": [
+					{
+						"caption": "off",
+						"value": "off",
+					},
+					{
+						"caption": "auto",
+						"value": "auto",
+						},
+					{
+						"caption": "sun",
+						"value": "sun",
+						},
+					{
+						"caption": "cloud",
+						"value": "cloud",
+						},
+					{
+						"caption": "shade",
+						"value": "shade",
+						},
+					{
+						"caption": "tungsten",
+						"value": "tungsten",
+						},
+					{
+						"caption": "fluorescent",
+						"value": "fluorescent",
+						},
+					{
+						"caption": "incandescent",
+						"value": "incandescent",
+						},
+					{
+						"caption": "flash",
+						"value": "flash",
+						},
+					{
+						"caption": "horizon",
+						"value": "horizon",
+						},
+				]
+			},
+			{
+				"key": "imxfx",
+				"description": "Set image effect (see Notes)",
+				"type": "select",
+				"options": [
+					{
+						"caption": "none",
+						"value": "none"
+					},
+					{
+						"caption": "negative",
+						"value": "negative"
+					},
+					{
+						"caption": "solarise",
+						"value": "solarise"
+					},
+					{
+						"caption": "sketch",
+						"value": "sketch"
+					},
+					{
+						"caption": "denoise",
+						"value": "denoise"
+					},
+					{
+						"caption": "emboss",
+						"value": "emboss"
+					},
+					{
+						"caption": "oilpaint",
+						"value": "oilpaint"
+					},
+					{
+						"caption": "hatch",
+						"value": "hatch"
+					},
+					{
+						"caption": "gpen",
+						"value": "gpen"
+					},
+					{
+						"caption": "pastel",
+						"value": "pastel"
+					},
+					{
+						"caption": "watercolour",
+						"value": "watercolour"
+					},
+					{
+						"caption": "film",
+						"value": "film"
+					},
+					{
+						"caption": "blur",
+						"value": "blur"
+					},
+					{
+						"caption": "saturation",
+						"value": "saturation"
+					},
+					{
+						"caption": "colourswap",
+						"value": "colourswap"
+					},
+					{
+						"caption": "washedout",
+						"value": "washedout"
+					},
+					{
+						"caption": "posterise",
+						"value": "posterise"
+					},
+					{
+						"caption": "colourpoint",
+						"value": "colourpoint"
+					},
+					{
+						"caption": "colourbalance",
+						"value": "colourbalance"
+					},
+					{
+						"caption": "cartoon",
+						"value": "cartoon"
+					}
+				]
+			},
+			{
+				"key": "colfx",
+				"description": "Set colour effect (U:V)",
+				"type": "str"
+			},
+			{
+				"key": "metering",
+				"description": "Set metering mode (see Notes)",
+				"type": "select",
+				"options": [
+					{
+						"caption": "average",
+						"value": "average"
+					},
+					{
+						"caption": "spot",
+						"value": "spot"
+					},
+					{
+						"caption": "backlit",
+						"value": "backlit"
+					},
+					{
+						"caption": "matrix",
+						"value": "matrix"
+					}
+				]
+			},
+			{
+				"key": "rotation",
+				"description": "Set image rotation (0-359)",
+				"type": "int",
+				"min": 0,
+				"max": 359,
+				"default": 0
+			},
+			{
+				"key": "hflip",
+				"description": "Set horizontal flip",
+				"type": "bool",
+				"default": false
+			},
+			{
+				"key": "vflip",
+				"description": "Set vertical flip",
+				"type": "bool",
+				"default": false
+			},
+			{
+				"key": "roi",
+				"description": "Set region of interest (x,y,w,d as normalised coordinates [0.0-1.0])",
+				"type": "str"
+			},
+			{
+				"key": "shutter",
+				"description": "Set shutter speed in microseconds",
+				"type": "int"
+			},
+			{
+				"key": "awbgains",
+				"description": "Set AWB gains - AWB mode must be off",
+				"type": "int"
+			},
+			{
+				"key": "drc",
+				"description": "Set DRC Level",
+				"type": "select",
+				"options": [
+					{
+						"caption": "off",
+
+						"value": "off"
+					},
+					{
+						"caption": "low",
+						"value": "low"
+					},
+					{
+						"caption": "med",
+						"value": "med"
+					},
+					{
+						"caption": "high",
+						"value": "high"
+					}
+				]
+			},
+			{
+				"key": "stats",
+				"description": "Force recomputation of statistics on stills capture pass",
+				"type": "bool",
+				"default": false
+			},
+			{
+				"key": "annotate",
+				"description": "Enable/Set annotate flags or text",
+				"type": "int"
+			},
+			{
+				"key": "stereo",
+				"description": "Select stereoscopic mode",
+				"type": "int"
+			},
+			{
+				"key": "decimate",
+				"description": "Half width/height of stereo image",
+				"type": "int"
+			},
+			{
+				"key": "3dswap",
+				"description": "Swap camera order for stereoscopic",
+				"type": "int"
+			}
+		]
+	}
+]

@@ -6,6 +6,9 @@ function applyRoutes() {
 	Finch.route('/:section', function (params) {
 		var vm = rvm.vmpool[params.section];
 
+		// load loading until ready
+		rvm.viewmodel(rvm.vmpool.loading);
+
 		vm.load(function () {
 			rvm.viewmodel(vm);
 		});

@@ -16,7 +16,7 @@ def handle_failed_command(error):
 
 @app.route("/api/settings")
 def api_settings():
-    return {}
+    return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
 
 @app.route("/api/timelapse", methods=['GET', 'POST'])
 def api_timelapse():
@@ -48,6 +48,13 @@ def api_take():
                 '300',
                 '-n',
                 '-o',
+                '-th',
+                '640:480:5',
+                settings.CAM_DIR+img_name,
+            ])
+            retcode = subprocess.call([
+                'exiv2',
+                '-et',
                 settings.CAM_DIR+img_name,
             ])
         except FileNotFoundError:
