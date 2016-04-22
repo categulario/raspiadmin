@@ -47,9 +47,9 @@ def api_take():
                 '-t',
                 '300',
                 '-n',
-                '-o',
                 '-th',
                 '640:480:5',
+                '-o',
                 settings.CAM_DIR+img_name,
             ])
             retcode = subprocess.call([
