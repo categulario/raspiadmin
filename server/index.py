@@ -44,6 +44,9 @@ def api_take():
         try:
             retcode = subprocess.call([
                 'raspistill',
+                '-t',
+                '300',
+                '-n',
                 '-o',
                 settings.CAM_DIR+img_name,
             ])
