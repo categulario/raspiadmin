@@ -46,8 +46,16 @@ def api_take():
                 'raspistill',
                 '-n',
                 '-t',
-                '1000',
+                '300',
+                '-n',
                 '-o',
+                '-th',
+                '640:480:5',
+                settings.CAM_DIR+img_name,
+            ])
+            retcode = subprocess.call([
+                'exiv2',
+                '-et',
                 settings.CAM_DIR+img_name,
             ])
         except FileNotFoundError:
