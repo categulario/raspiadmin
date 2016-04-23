@@ -100,8 +100,8 @@ def api_gallery():
 @app.route('/api/gallery/<path>', methods=['DELETE'])
 def api_gallery_delete(path):
     if request.method == 'DELETE':
-        full_path = os.path.join(settings.CAM_DIR, path.replace('_thumb', ''))
-        thumb_path = os.path.join(settings.CAM_DIR, path)
+        full_path = os.path.join(settings.CAM_DIR, path)
+        thumb_path = os.path.join(settings.CAM_DIR, path.split('.')[0]+'_thumb.jpg')
         if os.path.isfile(full_path):
             os.remove(full_path)
         if os.path.isfile(thumb_path):
