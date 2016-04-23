@@ -6,4 +6,4 @@ A tool for raspberrypi remote administration
 
 * almacenar timelapses por separado de alguna manera
 * visualizar timelapses en galería
-* load defaults on settings
+* placeholder on empty gallery

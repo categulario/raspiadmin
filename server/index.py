@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from lib.conf import settings
-from lib.fs import touch, file_items
+from lib.fs import touch, file_items, list_items
 from lib.errors import FailedCommand
 import subprocess
 import uuid
@@ -81,11 +81,15 @@ def api_take():
         try:
             retcode = subprocess.call([
                 'raspistill',
-                '-t',
-                '300',
                 '-n',
-                '-th',
-                '640:480:5',
+            ] + reduce(
+                lambda x, y: x + y,
+                map(
+                    list_items,
+                    setti.items()
+                ),
+                []
+            ) + [
                 '-o',
                 settings.CAM_DIR+img_name,
             ])
