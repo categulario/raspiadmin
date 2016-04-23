@@ -36,7 +36,7 @@
 				"key": "timeout",
 				"type": "int",
 				"description": "Time (in ms) before takes picture and shuts down",
-				"default": 1000,
+				"default": 300,
 				"min": 0,
 				"max": 999999
 			},
