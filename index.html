@@ -108,11 +108,56 @@
 		</script>
 
 		<script type="text/html" id="settings-template">
-			<div></div>
+			<div data-bind="foreach: settings">
+				<h4 data-bind="text: title" class="setting-group-title"></h4>
+				<!-- ko foreach: settings -->
+				<div class="setting-item" data-bind="template: {name: template}"></div>
+				<!-- /ko -->
+			</div>
 		</script>
 
 		<script type="text/html" id="loading-template">
 			<div id="spinner"></div>
+		</script>
+
+		<script type="text/html" id="int-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="text: value"></div>
+		</script>
+
+		<script type="text/html" id="bool-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="boolval: value"></div>
+		</script>
+
+		<script type="text/html" id="str-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value"></div>
+		</script>
+
+		<script type="text/html" id="select-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value"></div>
 		</script>
 
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -123,6 +168,7 @@
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/finchjs/finch.min.js"></script>
+		<script type="text/javascript" src="assets/js/prototype.js"></script>
 		<script type="text/javascript" src="assets/js/routes.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/TimelapseViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/GalleryViewModel.js"></script>
