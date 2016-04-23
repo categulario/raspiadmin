@@ -122,7 +122,7 @@ button {
 	position: relative;
 }
 .media-item {
-	max-width: 46%;
+	width: 46%;
 	height: auto;
 	margin-right: 10px;
 	margin-bottom: 10px;
