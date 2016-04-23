@@ -78,11 +78,11 @@ function PromptViewModel() {
 	self.options     = ko.observableArray([]);
 
 	self.show = function (options, save_callback) {
+		self.value(options.value);
 		self.title(options.humanKey);
 		self.description(options.description);
-		self.value(options.value);
-		self.widget(options.template+'-widget');
 		self.options(options.options || []);
+		self.widget(options.template+'-widget');
 		self.save_callback = save_callback;
 
 		setTimeout(function () {
@@ -94,6 +94,13 @@ function PromptViewModel() {
 		if (typeof self.save_callback == 'function') {
 			self.save_callback(self.value());
 		}
+
+		self.title('');
+		self.description('');
+		self.value('');
+		self.widget('int-template-widget');
+		self.options([]);
+
 		$("#prompt-modal").modal('hide');
 	};
 }
