@@ -16,6 +16,10 @@ function Setting(options, settings) {
 	self.description = ko.observable(options.description);
 	self.enabled     = ko.observable(options.key in settings);
 	self.value       = ko.observable(settings[options.key] || options.default);
+
+	self.prompt = function (vm, event) {
+		console.log(event);
+	};
 }
 
 function SettingsViewModel() {
@@ -49,3 +53,4 @@ function SettingsViewModel() {
 		done();
 	};
 }
+

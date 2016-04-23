@@ -8,7 +8,7 @@
 				"description": "Set image width <size>",
 				"min": 640,
 				"max": 2592,
-				"default": 1296
+				"default": 2592
 			},
 			{
 				"key": "height",
@@ -16,7 +16,7 @@
 				"description": "Set image height <size>",
 				"min": 480,
 				"max": 1944,
-				"default": 972
+				"default": 1944
 			},
 			{
 				"key": "quality",

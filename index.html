@@ -127,7 +127,7 @@
 					<small data-bind="text: description"></small>
 				</h5>
 			</div>
-			<div class="setting-value" data-bind="text: value"></div>
+			<div class="setting-value" data-bind="text: value, click: prompt"></div>
 		</script>
 
 		<script type="text/html" id="bool-template">
@@ -137,7 +137,7 @@
 					<small data-bind="text: description"></small>
 				</h5>
 			</div>
-			<div class="setting-value" data-bind="boolval: value"></div>
+			<div class="setting-value" data-bind="boolval: value, click: prompt"></div>
 		</script>
 
 		<script type="text/html" id="str-template">
@@ -147,7 +147,7 @@
 					<small data-bind="text: description"></small>
 				</h5>
 			</div>
-			<div class="setting-value"><i class="fa fa-ellipsis-h"></i></div>
+			<div class="setting-value" data-bind="click: prompt"><i class="fa fa-ellipsis-h"></i></div>
 		</script>
 
 		<script type="text/html" id="select-template">
@@ -157,7 +157,7 @@
 					<small data-bind="text: description"></small>
 				</h5>
 			</div>
-			<div class="setting-value" data-bind="text: value"></div>
+			<div class="setting-value" data-bind="text: value, click: prompt"></div>
 		</script>
 
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>

@@ -146,9 +146,6 @@ button {
 }
 
 // things for settings
-.setting-group-title {
-	font-weight: bold;
-}
 .setting-item {
 	height: 50px;
 }
@@ -169,6 +166,7 @@ button {
 	color: #666;
 	font-size: 16px;
 	padding-top: 10px;
+	cursor: pointer;
 }
 .setting-item > .setting-label > h5 {
 	font-weight: bold;
