@@ -2,12 +2,12 @@ function Picture(src) {
 	var self = this;
 
 	self.src = ko.observable('/cam/'+src);
-	self.bigSrc = ko.observable('/cam/'+src.replace('_thumb', ''));
+	self.bigSrc = ko.observable('/cam/'+src.replace('-thumb', ''));
 
 	self.show = function (vm, event) {
 		$('#img-modal-img')[0].src = self.bigSrc();
 		$('#download-pic')[0].href = self.bigSrc();
-		$('#download-pic')[0].download = src.replace('_thumb', '');
+		$('#download-pic')[0].download = src.replace('-thumb', '');
 
 		setTimeout(function () {
 			$('#img-modal').modal('show');

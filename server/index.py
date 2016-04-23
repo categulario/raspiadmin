@@ -65,7 +65,7 @@ def api_take():
             raise FailedCommand('The command could not be executed', status_code=500)
 
         return jsonify({
-            "src": 'cam/'+img_uuid+'_thumb.jpg'
+            "src": 'cam/'+img_uuid+'-thumb.jpg'
         })
 
 @app.route('/api/shutdown', methods=['POST'])
@@ -92,7 +92,7 @@ def api_gallery():
         def is_thumb(filename):
             if filename.lower().split('.')[-1] not in ['jpg', 'png', 'gif']:
                 return False
-            return '_thumb' in filename
+            return '-thumb' in filename
         return jsonify({
             'pictures': filter(is_thumb, os.listdir(settings.CAM_DIR))
         })
@@ -101,7 +101,7 @@ def api_gallery():
 def api_gallery_delete(path):
     if request.method == 'DELETE':
         full_path = os.path.join(settings.CAM_DIR, path)
-        thumb_path = os.path.join(settings.CAM_DIR, path.split('.')[0]+'_thumb.jpg')
+        thumb_path = os.path.join(settings.CAM_DIR, path.split('.')[0]+'-thumb.jpg')
         if os.path.isfile(full_path):
             os.remove(full_path)
         if os.path.isfile(thumb_path):
