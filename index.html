@@ -15,7 +15,7 @@
 	<body>
 		<div class="rasp-nav">
 			<div class="rasp-menu-toggle" data-bind="click: show_menu"><i class="fa fa-bars"></i></div>
-			<div class="rasp-title">Rasp administration</div>
+			<div class="rasp-title" data-bind="text: title"></div>
 			<div class="rasp-reload" data-bind="click: reload"><i class="fa fa-refresh"></i></div>
 		</div>
 
@@ -108,7 +108,7 @@
 		</script>
 
 		<script type="text/html" id="settings-template">
-			<div data-bind="component: "></div>
+			<div></div>
 		</script>
 
 		<script type="text/html" id="loading-template">
@@ -127,6 +127,7 @@
 		<script type="text/javascript" src="assets/js/viewmodels/TimelapseViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/GalleryViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/SettingsViewModel.js"></script>
+		<script type="text/javascript" src="assets/js/viewmodels/LoadingViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>
