@@ -19,6 +19,7 @@ function GalleryViewModel() {
 	var self = this;
 
 	self.template = ko.observable('gallery-template');
+	self.title    = ko.observable('Gallery');
 	self.pictures = ko.observableArray([]);
 
 	self.load = function (done) {

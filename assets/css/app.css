@@ -1,5 +1,6 @@
 body {
 	padding-top: 58px;
+	padding-bottom: 20px;
 	background-color: #e2e2e2;
 }
 button {
@@ -136,11 +137,40 @@ button {
 .modal-dialog {
 	margin-top: 40%;
 }
-.modal-content {
+#img-modal .modal-content {
 	background-color: transparent;
 	border: none;
 	box-shadow: none;
 }
-.modal-footer {
+#img-modal .modal-footer {
 	border-top: none;
+}
+
+// things for settings
+.setting-item {
+	height: 50px;
+}
+.setting-item > .setting-label {
+	width: 80%;
+	height: 50px;
+	display: inline-block;
+	float: left;
+}
+.setting-item > .setting-value {
+	width: 20%;
+	height: 50px;
+	display: inline-block;
+	float: right;
+	text-align: center;
+	vertical-align: center;
+	font-weight: bold;
+	color: #666;
+	font-size: 16px;
+	padding-top: 10px;
+	cursor: pointer;
+}
+.setting-item > .setting-label > h5 {
+	font-weight: bold;
+	height: 50px;
+	margin: 0;
 }

@@ -4,3 +4,5 @@ node_modules/
 *.py[oc]
 timelapse/
 preview.gif
+settings.json
+settings.txt

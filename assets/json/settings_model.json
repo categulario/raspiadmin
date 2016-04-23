@@ -8,7 +8,7 @@
 				"description": "Set image width <size>",
 				"min": 640,
 				"max": 2592,
-				"default": 1296
+				"default": 2592
 			},
 			{
 				"key": "height",
@@ -16,7 +16,7 @@
 				"description": "Set image height <size>",
 				"min": 480,
 				"max": 1944,
-				"default": 972
+				"default": 1944
 			},
 			{
 				"key": "quality",
@@ -35,8 +35,8 @@
 			{
 				"key": "timeout",
 				"type": "int",
-				"description": "Time (in ms) before takes picture and shuts down (if not specified, set to 5s)",
-				"default": 1000,
+				"description": "Time (in ms) before takes picture and shuts down",
+				"default": 300,
 				"min": 0,
 				"max": 999999
 			},
@@ -55,7 +55,7 @@
 			{
 				"key": "mode",
 				"type": "select",
-				"description": "Force sensor mode. 0=auto. See docs for other modes available",
+				"description": "Force sensor mode",
 				"options": [
 					{
 						"value": 0,
@@ -67,29 +67,30 @@
 					},
 					{
 						"value": 2,
-						"caption": "2592x1944 [4:3] video/pic (full)",
+						"caption": "2592x1944 [4:3] video/pic (full)"
 					},
 					{
 						"value": 3,
-						"caption": "2592x1944 [4:3] video/pic (full)",
+						"caption": "2592x1944 [4:3] video/pic (full)"
 					},
 					{
 						"value": 4,
-						"caption": "1296x972 [4:3] video (full)",
+						"caption": "1296x972 [4:3] video (full)"
 					},
 					{
 						"value": 5,
-						"caption": "1296x730 [16:9] video (full)",
+						"caption": "1296x730 [16:9] video (full)"
 					},
 					{
 						"value": 6,
-						"caption": "640x480 [4:3] video (full)",
+						"caption": "640x480 [4:3] video (full)"
 					},
 					{
 						"value": 7,
-						"caption": "640x480 [4:3] video (full)",
-					},
-				]
+						"caption": "640x480 [4:3] video (full)"
+					}
+				],
+				"default": 0
 			}
 		]
 	},
@@ -101,33 +102,38 @@
 				"description": "Set image sharpness (-100 to 100)",
 				"type": "int",
 				"min": -100,
-				"max": 100
+				"max": 100,
+				"default": 0
 			},
 			{
 				"key": "contrast",
 				"description": "Set image contrast (-100 to 100)",
 				"type": "int",
 				"min": -100,
-				"max": 100
+				"max": 100,
+				"default": 0
 			},
 			{
 				"key": "brightness",
 				"description": "Set image brightness (0 to 100)",
 				"type": "int",
 				"min": 0,
-				"max": 100
+				"max": 100,
+				"default": 50
 			},
 			{
 				"key": "saturation",
 				"description": "Set image saturation (-100 to 100)",
 				"type": "int",
 				"min": -100,
-				"max": 100
+				"max": 100,
+				"default": 0
 			},
 			{
 				"key": "ISO",
 				"description": "Set capture ISO",
-				"type": "int"
+				"type": "int",
+				"default": 0
 			},
 			{
 				"key": "vstab",
@@ -138,7 +144,10 @@
 			{
 				"key": "ev",
 				"description": "Set EV compensation - steps of 1/6 stop",
-				"type": "int"
+				"type": "int",
+				"min": -5,
+				"max": 5,
+				"default": 0
 			},
 			{
 				"key": "exposure",
@@ -197,7 +206,8 @@
 						"caption": "fireworks",
 						"value": "fireworks"
 					}
-				]
+				],
+				"default": "off"
 			},
 			{
 				"key": "awb",
@@ -206,45 +216,46 @@
 				"options": [
 					{
 						"caption": "off",
-						"value": "off",
+						"value": "off"
 					},
 					{
 						"caption": "auto",
-						"value": "auto",
-						},
+						"value": "auto"
+					},
 					{
 						"caption": "sun",
-						"value": "sun",
-						},
+						"value": "sun"
+					},
 					{
 						"caption": "cloud",
-						"value": "cloud",
-						},
+						"value": "cloud"
+					},
 					{
 						"caption": "shade",
-						"value": "shade",
-						},
+						"value": "shade"
+					},
 					{
 						"caption": "tungsten",
-						"value": "tungsten",
-						},
+						"value": "tungsten"
+					},
 					{
 						"caption": "fluorescent",
-						"value": "fluorescent",
-						},
+						"value": "fluorescent"
+					},
 					{
 						"caption": "incandescent",
-						"value": "incandescent",
-						},
+						"value": "incandescent"
+					},
 					{
 						"caption": "flash",
-						"value": "flash",
-						},
+						"value": "flash"
+					},
 					{
 						"caption": "horizon",
-						"value": "horizon",
-						},
-				]
+						"value": "horizon"
+					}
+				],
+				"default": "off"
 			},
 			{
 				"key": "imxfx",
@@ -331,12 +342,14 @@
 						"caption": "cartoon",
 						"value": "cartoon"
 					}
-				]
+				],
+				"default": "none"
 			},
 			{
 				"key": "colfx",
 				"description": "Set colour effect (U:V)",
-				"type": "str"
+				"type": "str",
+				"default": "128:128"
 			},
 			{
 				"key": "metering",
@@ -359,7 +372,8 @@
 						"caption": "matrix",
 						"value": "matrix"
 					}
-				]
+				],
+				"default": "average"
 			},
 			{
 				"key": "rotation",
@@ -384,17 +398,20 @@
 			{
 				"key": "roi",
 				"description": "Set region of interest (x,y,w,d as normalised coordinates [0.0-1.0])",
-				"type": "str"
+				"type": "str",
+				"default": ""
 			},
 			{
 				"key": "shutter",
 				"description": "Set shutter speed in microseconds",
-				"type": "int"
+				"type": "str",
+				"default": ""
 			},
 			{
 				"key": "awbgains",
 				"description": "Set AWB gains - AWB mode must be off",
-				"type": "int"
+				"type": "str",
+				"default": ""
 			},
 			{
 				"key": "drc",
@@ -403,7 +420,6 @@
 				"options": [
 					{
 						"caption": "off",
-
 						"value": "off"
 					},
 					{
@@ -418,7 +434,8 @@
 						"caption": "high",
 						"value": "high"
 					}
-				]
+				],
+				"default": "off"
 			},
 			{
 				"key": "stats",
@@ -429,22 +446,26 @@
 			{
 				"key": "annotate",
 				"description": "Enable/Set annotate flags or text",
-				"type": "int"
+				"type": "str",
+				"default": ""
 			},
 			{
 				"key": "stereo",
 				"description": "Select stereoscopic mode",
-				"type": "int"
+				"type": "bool",
+				"default": false
 			},
 			{
 				"key": "decimate",
 				"description": "Half width/height of stereo image",
-				"type": "int"
+				"type": "bool",
+				"default": false
 			},
 			{
 				"key": "3dswap",
 				"description": "Swap camera order for stereoscopic",
-				"type": "int"
+				"type": "bool",
+				"default": false
 			}
 		]
 	}

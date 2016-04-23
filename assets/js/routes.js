@@ -8,9 +8,11 @@ function applyRoutes() {
 
 		// load loading until ready
 		rvm.viewmodel(rvm.vmpool.loading);
+		rvm.title('loading...');
 
 		vm.load(function () {
 			rvm.viewmodel(vm);
+			rvm.title(vm.title());
 		});
 
 		rvm.hide_menu();
