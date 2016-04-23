@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from lib.conf import settings
-from lib.fs import touch
+from lib.fs import touch, file_items
 from lib.errors import FailedCommand
 import subprocess
 import uuid
@@ -37,6 +37,11 @@ def api_settings_set(key):
             del setti[key]
 
         json.dump(setti, open(os.path.join(settings.HOME_DIR, 'settings.json'), 'w'), indent=2)
+        with open(os.path.join(settings.HOME_DIR, 'settings.txt'), 'w') as settings_plain:
+            settings_plain.write(' '.join(map(
+                file_items,
+                setti.items()
+            )))
 
         return jsonify({
             "value": value

@@ -7,3 +7,13 @@ def touch(filename):
 	"""
 	with open(filename, 'w'):
 		pass
+
+def file_items(item):
+	"""
+	take a tuple (key, value) and renders something like --key value or
+	just --key in the case that value is boolean
+	"""
+	if item[1] == True:
+		return '--%s'%item[0]
+	else:
+		return '--%s %s'%(item[0], item[1])
