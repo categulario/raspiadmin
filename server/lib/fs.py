@@ -17,3 +17,13 @@ def file_items(item):
 		return '--%s'%item[0]
 	else:
 		return '--%s %s'%(item[0], item[1])
+
+def list_items(item):
+	"""
+	Take a tuple (key, value) and renders something like [--key, value] or
+	just [--key] in the case that value is boolean
+	"""
+	if item[1] == True:
+		return ['--%s'%item[0]]
+	else:
+		return ['--%s'%item[0], '%s'%item[1]]
