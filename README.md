@@ -6,8 +6,4 @@ A tool for raspberrypi remote administration
 
 * almacenar timelapses por separado de alguna manera
 * visualizar timelapses en galería
-* reload content of gallery
-
-Settings:
-* ajustes ordinarios de la cámara a partir de las opciones
-* ajustes del cálculo de timelapses?
+* load defaults on settings

@@ -2,6 +2,7 @@ function TimelapseViewModel() {
 	var self = this;
 
 	self.template          = ko.observable('timelapse-template');
+	self.title             = ko.observable('Camera');
 	self.timelapse_running = ko.observable(false);
 	self.mainImageSrc      = ko.observable('timelapse/000last.jpg?'+Date.now());
 

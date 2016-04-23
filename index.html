@@ -15,7 +15,7 @@
 	<body>
 		<div class="rasp-nav">
 			<div class="rasp-menu-toggle" data-bind="click: show_menu"><i class="fa fa-bars"></i></div>
-			<div class="rasp-title">Rasp administration</div>
+			<div class="rasp-title" data-bind="text: title"></div>
 			<div class="rasp-reload" data-bind="click: reload"><i class="fa fa-refresh"></i></div>
 		</div>
 
@@ -102,17 +102,94 @@
 								<i class="fa fa-download"></i>
 							</a>
 						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+					</div>
+				</div>
+			</div>
 		</script>
 
 		<script type="text/html" id="settings-template">
-			<div data-bind="component: "></div>
+			<div data-bind="foreach: settings">
+				<h4 data-bind="text: title" class="setting-group-title"></h4>
+				<!-- ko foreach: settings -->
+				<div class="setting-item" data-bind="template: {name: template}"></div>
+				<!-- /ko -->
+			</div>
+			<button class="btn btn-danger fullwidth" data-bind="click: reset">Reset</button>
+			<!-- ko with: prompt -->
+			<div id="prompt-modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" type='button' data-dismiss="modal">&times;</button>
+							<h4 class="modal-title" data-bind="text: title"></h4>
+						</div>
+						<div class="modal-body">
+							<div data-bind="text: description"></div>
+							<div data-bind="template: widget"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-bind="click: save"><i class="fa fa-check"></i> Set value</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /ko -->
 		</script>
 
 		<script type="text/html" id="loading-template">
 			<div id="spinner"></div>
+		</script>
+
+		<script type="text/html" id="int-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="text: value, click: prompt"></div>
+		</script>
+
+		<script type="text/html" id="bool-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="boolval: value, click: prompt"></div>
+		</script>
+
+		<script type="text/html" id="str-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="click: prompt"><i class="fa fa-ellipsis-h"></i></div>
+		</script>
+
+		<script type="text/html" id="select-template">
+			<div class="setting-label">
+				<h5>
+					<span data-bind="text: humanKey"></span><br>
+					<small data-bind="text: description"></small>
+				</h5>
+			</div>
+			<div class="setting-value" data-bind="text: value, click: prompt"></div>
+		</script>
+
+		<script type="text/html" id="int-template-widget">
+			<input type="number" data-bind="value: value" class="form-control">
+		</script>
+
+		<script type="text/html" id="str-template-widget">
+			<input type="text" data-bind="value: value" class="form-control">
+		</script>
+
+		<script type="text/html" id="select-template-widget">
+			<select data-bind="value: value, options: options, optionsText: 'caption', optionsValue: 'value'" class="form-control"></select>
 		</script>
 
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -123,10 +200,13 @@
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.min.js"></script>
 		<script type="text/javascript" src="bower_components/ladda/dist/ladda.jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/finchjs/finch.min.js"></script>
+		<script type="text/javascript" src="assets/js/prototype.js"></script>
+		<script type="text/javascript" src="assets/js/bindings.js"></script>
 		<script type="text/javascript" src="assets/js/routes.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/TimelapseViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/GalleryViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/viewmodels/SettingsViewModel.js"></script>
+		<script type="text/javascript" src="assets/js/viewmodels/LoadingViewModel.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 	</body>
 </html>
