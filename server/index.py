@@ -77,6 +77,7 @@ def api_take():
     if request.method == 'POST':
         img_uuid = uuid.uuid1().hex
         img_name = img_uuid+'.jpg'
+        setti = json.load(open(os.path.join(settings.HOME_DIR, 'settings.json')))
 
         try:
             retcode = subprocess.call([
