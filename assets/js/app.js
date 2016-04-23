@@ -61,6 +61,13 @@ function RaspiAdmin() {
 		});
 	};
 
+	self.reload = function (vm, event) {
+		$(event.currentTarget).find('i').addClass('fa-spin');
+		self.viewmodel().load(function () {
+			$(event.currentTarget).find('i').removeClass('fa-spin');
+		});
+	};
+
 	self.shut_down = function (vm, event) {
 		if (!confirm('Do you really want to shutdown the rasp?')) {
 			return;
