@@ -102,9 +102,9 @@
 								<i class="fa fa-download"></i>
 							</a>
 						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+					</div>
+				</div>
+			</div>
 		</script>
 
 		<script type="text/html" id="settings-template">
@@ -114,6 +114,25 @@
 				<div class="setting-item" data-bind="template: {name: template}"></div>
 				<!-- /ko -->
 			</div>
+			<!-- ko with: prompt -->
+			<div id="prompt-modal" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" type='button' data-dismiss="modal">&times;</button>
+							<h4 class="modal-title" data-bind="text: title"></h4>
+						</div>
+						<div class="modal-body">
+							<div data-bind="text: description"></div>
+							<div data-bind="template: widget"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-bind="click: save"><i class="fa fa-check"></i> Set value</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /ko -->
 		</script>
 
 		<script type="text/html" id="loading-template">
@@ -158,6 +177,18 @@
 				</h5>
 			</div>
 			<div class="setting-value" data-bind="text: value, click: prompt"></div>
+		</script>
+
+		<script type="text/html" id="int-template-widget">
+			<input type="number" data-bind="value: value" class="form-control">
+		</script>
+
+		<script type="text/html" id="str-template-widget">
+			<input type="text" data-bind="value: value" class="form-control">
+		</script>
+
+		<script type="text/html" id="select-template-widget">
+			<select data-bind="value: value, options: options, optionsText: 'caption', optionsValue: 'value'" class="form-control"></select>
 		</script>
 
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
