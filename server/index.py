@@ -19,6 +19,29 @@ def handle_failed_command(error):
 def api_settings():
     return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
 
+@app.route("/api/settings/<key>", methods=['PUT'])
+def api_settings_set(key):
+    if request.method == 'PUT':
+        if 'value' not in request.form:
+            return '{"msg": "invalid request"}', 400
+
+        setti = json.load(open(os.path.join(settings.HOME_DIR, 'settings.json')))
+        value = request.form['value']
+
+        if value == 'true': value = True
+        if value == 'false': value = False
+
+        if value:
+            setti[key] = value
+        elif key in setti:
+            del setti[key]
+
+        json.dump(setti, open(os.path.join(settings.HOME_DIR, 'settings.json'), 'w'), indent=2)
+
+        return jsonify({
+            "value": value
+        })
+
 @app.route("/api/timelapse", methods=['GET', 'POST'])
 def api_timelapse():
     if request.method == 'POST':

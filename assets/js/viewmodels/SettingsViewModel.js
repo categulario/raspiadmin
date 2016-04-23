@@ -18,7 +18,25 @@ function Setting(options, settings) {
 	self.value       = ko.observable(settings[options.key] || options.default);
 
 	self.prompt = function (vm, event) {
-		console.log(event);
+		if (self.template() == 'bool-template') {
+			// this template is easy, just toggle the value and return
+			self.value(!self.value());
+			$.ajax({
+				type: 'put',
+				url: '/api/settings/'+self.key(),
+				data: {
+					value: self.value()
+				},
+				success: function (data) {
+					self.value(data.value);
+				},
+				error: function (xhr) {
+					alert('Something went wrong: '+xhr.status);
+				}
+			});
+			return;
+		}
+
 	};
 }
 
