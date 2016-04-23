@@ -15,9 +15,16 @@ def handle_failed_command(error):
     response.status_code = error.status_code
     return response
 
-@app.route("/api/settings")
+@app.route("/api/settings", methods=['GET', 'DELETE'])
 def api_settings():
-    return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
+    if request.method == 'GET':
+        return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
+    elif request.method == 'DELETE':
+        # deleting all settings is easy, just erase both files
+        json.dump({}, open(os.path.join(settings.HOME_DIR, 'settings.json'), 'w'))
+        with open(os.path.join(settings.HOME_DIR, 'settings.txt'), 'w') as settings_plain:
+            settings_plain.write('')
+        return ''
 
 @app.route("/api/settings/<key>", methods=['PUT'])
 def api_settings_set(key):

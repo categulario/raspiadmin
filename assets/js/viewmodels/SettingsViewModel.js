@@ -129,6 +129,25 @@ function SettingsViewModel() {
 		done();
 	};
 
+	self.reset = function (vm, event) {
+		var ladda = $(event.target).ladda();
+
+		ladda.ladda('start');
+
+		$.ajax({
+			type: 'delete',
+			url: '/api/settings',
+			success: function () {
+				self.load(function () {
+					ladda.ladda('stop');
+				});
+			},
+			error: function (xhr) {
+				alert('Something went wrong: '+xhr.status);
+			}
+		});
+	};
+
 	self.prompt = new PromptViewModel();
 }
 
