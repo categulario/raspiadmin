@@ -52,7 +52,7 @@ function GalleryViewModel() {
 			url: '/api/gallery/'+pieces[pieces.length-1],
 			success: function () {
 				self.pictures().filter(function (pic) {
-					return pic.src() == '/cam/'+pieces[pieces.length-1];
+					return pic.bigSrc() == '/cam/'+pieces[pieces.length-1];
 				}).forEach(function (item) {
 					self.pictures.remove(item);
 				});
