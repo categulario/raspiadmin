@@ -4,7 +4,7 @@ function TimelapseViewModel() {
 	self.template          = ko.observable('timelapse-template');
 	self.title             = ko.observable('Camera');
 	self.timelapse_running = ko.observable(false);
-	self.mainImageSrc      = ko.observable('timelapse/000last.jpg?'+Date.now());
+	self.mainImageSrc      = ko.observable('timelapse/000last-thumb.jpg?'+Date.now());
 
 	self.timelapse_btn_text = ko.pureComputed(function () {
 		if (self.timelapse_running()) {
@@ -47,7 +47,7 @@ function TimelapseViewModel() {
 	};
 
 	self.preview_reload = function (vm, event) {
-		self.mainImageSrc('timelapse/000last.jpg?'+Date.now());
+		self.mainImageSrc('timelapse/000last-thumb.jpg?'+Date.now());
 	};
 
 	self.take_photo = function (vm, event) {
