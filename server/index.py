@@ -21,9 +21,12 @@ def api_settings():
         return jsonify(json.load(open(os.path.join(settings.HOME_DIR, 'settings.json'))))
     elif request.method == 'DELETE':
         # deleting all settings is easy, just erase both files
-        json.dump({}, open(os.path.join(settings.HOME_DIR, 'settings.json'), 'w'))
+        json.dump({
+            'timeout': 300,
+            'thumb': '640:480:50',
+        }, open(os.path.join(settings.HOME_DIR, 'settings.json'), 'w'))
         with open(os.path.join(settings.HOME_DIR, 'settings.txt'), 'w') as settings_plain:
-            settings_plain.write('')
+            settings_plain.write('-t 300 -th 640:480:50')
         return ''
 
 @app.route("/api/settings/<key>", methods=['PUT'])
