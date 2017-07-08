@@ -1,5 +1,8 @@
 bower_components/
+node_modules/
 *.log
 *.py[oc]
 timelapse/
 preview.gif
+settings.json
+settings.txt

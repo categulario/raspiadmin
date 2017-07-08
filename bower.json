@@ -22,6 +22,10 @@
   "dependencies": {
     "jquery": "^2.2.3",
     "bootstrap": "^3.3.6",
-    "knockout": "^3.4.0"
+    "knockout": "^3.4.0",
+    "font-awesome": "fontawesome#^4.5.0",
+    "ladda": "^1.0.0",
+    "knockout-mapping": "^2.4.1",
+    "finchjs": "^0.5.14"
   }
 }
