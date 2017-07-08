@@ -2,7 +2,7 @@ function RaspiAdmin() {
 	var self = this;
 
 	self.load = function (done) {
-		$.get('/api/settings', function (data) {
+		$.get('/api/settings.json', function (data) {
 			console.log(data);
 			done();
 		});
